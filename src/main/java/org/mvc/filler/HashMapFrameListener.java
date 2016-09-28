@@ -75,15 +75,15 @@ public class HashMapFrameListener<T, U, V> implements ActionListener {
 			if(!Validator.tipiPrimitivi.containsKey(classeDelValore) && !Validator.tipiPrimitivi.containsKey(classeDellaChiave)){
 				chiave = (U) classeDellaChiave.newInstance();
 				valore = (V) classeDelValore.newInstance();
-				filler = new TheFiller((Map<T, U>) mappaDaFillare.get(padreDellaMappaDaFillare), chiave, valore);
+				filler = new TheFiller((Map<U, V>)mappaDaFillare.get(padreDellaMappaDaFillare), chiave, valore);
 			} else if(Validator.tipiPrimitivi.containsKey(classeDelValore) && Validator.tipiPrimitivi.containsKey(classeDellaChiave)){
 				filler = new TheFiller((Map<T, U>) mappaDaFillare.get(padreDellaMappaDaFillare), classeDellaChiave, classeDelValore);
 			} else if(Validator.tipiPrimitivi.containsKey(classeDelValore)) {
 				chiave = (U) classeDellaChiave.newInstance();
-				filler = new TheFiller((Map<T, U>) mappaDaFillare.get(padreDellaMappaDaFillare), chiave, classeDelValore);
+				filler = new TheFiller((Map<U, V>) mappaDaFillare.get(padreDellaMappaDaFillare), chiave, classeDelValore);
 			} else {
 				valore = (V) classeDelValore.newInstance();
-				filler = new TheFiller((Map<T, U>) mappaDaFillare.get(padreDellaMappaDaFillare), classeDellaChiave, valore);
+				filler = new TheFiller((Map<U, V>) mappaDaFillare.get(padreDellaMappaDaFillare), classeDellaChiave, valore);
 			}
 			filler.fill();
 		} catch (InstantiationException e3) {
