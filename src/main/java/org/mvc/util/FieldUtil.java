@@ -13,6 +13,8 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 
+import com.thoughtworks.xstream.XStream;
+
 public class FieldUtil {
 
 	public static void setProperty(final Object object, final Field field, final Object value) throws IllegalAccessException {
@@ -107,7 +109,7 @@ public class FieldUtil {
 		String path = System.getProperty(StringConstants.USERDIR) + StringConstants.FOLDER;
     	File f = new File(path + objectToFill.getClass().getName());
     	if(f.exists()) {
-//    		objectToFill = (T) new XStream().fromXML(f);
+    		objectToFill = (T) new XStream().fromXML(f);
     	}
 		ArrayList<Field> fields = FieldUtil.retrieveFields(objectToFill);
 		for(Field field : fields){
